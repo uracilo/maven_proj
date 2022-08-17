@@ -1,12 +1,14 @@
 pipeline {
     agent any
-
+    tools { 
+        maven 'maven-3.8.6' 
+    }
     stages {
         stage ('Compile Stage') {
 
             steps {
                 
-                    sh '/usr/local/src/apache-maven/bin/mvn clean compile'
+                    sh 'mvn clean compile'
                 
             }
         }
@@ -15,7 +17,7 @@ pipeline {
 
             steps {
                
-                    sh '/usr/local/src/apache-maven/bin/mvn test'
+                    sh 'mvn test'
                 
             }
         }
@@ -24,7 +26,7 @@ pipeline {
         stage ('Deployment Stage') {
             steps {
                 
-                    sh '/usr/local/src/apache-maven/bin/mvn deploy'
+                    sh 'mvn deploy'
                 
             }
         }
